@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Cursos - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f9f7ff, #f0f8ff);
+    }
+    .course-card img {
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .course-card {
+      transition: transform .2s;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+    .hero {
+      background: linear-gradient(120deg, #6f42c1, #0d6efd);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      border-radius: 12px;
+    }
+    .filter-box {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="index.html">EDIC</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Categorias</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+      </ul>
+      <form class="d-flex me-3">
+        <input class="form-control" type="search" placeholder="Buscar cursos">
+      </form>
+      <a href="#" class="btn btn-outline-primary me-2">Entrar</a>
+      <a href="#" class="btn btn-primary">Cadastrar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="container mt-4">
+  <div class="hero">
+    <h1 class="fw-bold">Aprenda o que quiser, quando quiser</h1>
+    <p class="lead">Milhares de cursos online para você evoluir na sua carreira</p>
+    <a href="#" class="btn btn-light btn-lg mt-3"><i class="fas fa-play me-2"></i>Explorar Cursos</a>
+  </div>
+</div>
+
+<!-- Cursos em Destaque -->
+<div class="container mt-5 ">
+  <h2 class="fw-bold mb-4 text-center">Cursos em Destaque</h2>
+  <div class="row g-4 justify-content-center" id="featured-courses">
+    <!-- Cursos destaque inseridos via JS -->
+  </div>
+</div>
+
+<!-- Filtros -->
+<div class="container mt-5">
+  <div class="filter-box">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+          <input type="text" id="search" class="form-control" placeholder="Buscar cursos...">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <select id="category" class="form-select">
+          <option value="all">Todas as Categorias</option>
+          <option value="tecnologia">Tecnologia</option>
+          <option value="negocios">Negócios</option>
+          <option value="marketing">Marketing</option>
+          <option value="design">Design</option>
+          <option value="idiomas">Idiomas</option>
+          <option value="desenvolvimento_pessoal">Desenvolvimento Pessoal</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select id="price" class="form-select">
+          <option value="all">Todos os Preços</option>
+          <option value="free">Gratuito</option>
+          <option value="under50">Menos de 2500Mzn</option>
+          <option value="paid">Pagos</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select id="sort" class="form-select">
+          <option value="popular">Mais Populares</option>
+          <option value="rating">Melhor Avaliados</option>
+          <option value="newest">Mais Recentes</option>
+          <option value="price_low">Menor Preço</option>
+          <option value="price_high">Maior Preço</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary w-100" id="applyFilters"><i class="fas fa-filter me-2"></i>Filtrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lista de Cursos -->
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 id="results-title">Todos os Cursos</h3>
+    <small id="results-count" class="text-muted"></small>
+  </div>
+  <div class="row g-4" id="courses-list">
+    <!-- Cursos carregados via JS -->
+  </div>
+
+  <!-- Botão Ver Mais -->
+  <div class="text-center mt-4">
+    <button id="btn-load-more" class="btn btn-outline-primary">Ver Mais</button>
+  </div>
+</div>
+</div>
+
+<section class="container my-5">
+  <h3 class="mb-4 text-center">O que nossos alunos dizem</h3>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm h-100">
+        <div class="d-flex align-items-center mb-3">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aluno 1" class="rounded-circle me-3" width="60" height="60" />
+          <div>
+            <h6 class="mb-0">Ana Silva</h6>
+            <small class="text-muted">Desenvolvedora Front-end</small>
+          </div>
+        </div>
+        <p class="mb-0 fst-italic">"Curso muito completo! A didática do professor é excelente e os exercícios ajudam muito."</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm h-100">
+        <div class="d-flex align-items-center mb-3">
+          <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="Aluno 2" class="rounded-circle me-3" width="60" height="60" />
+          <div>
+            <h6 class="mb-0">Carlos Mendes</h6>
+            <small class="text-muted">Empreendedor Digital</small>
+          </div>
+        </div>
+        <p class="mb-0 fst-italic">"Aprendi muito e já apliquei em projetos reais! Recomendo para quem quer dar um up na carreira."</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm h-100">
+        <div class="d-flex align-items-center mb-3">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Aluno 3" class="rounded-circle me-3" width="60" height="60" />
+          <div>
+            <h6 class="mb-0">Maria Costa</h6>
+            <small class="text-muted">Estudante de TI</small>
+          </div>
+        </div>
+        <p class="mb-0 fst-italic">"Conteúdo atualizado e suporte rápido. Gostei muito do curso e do ambiente de aprendizado."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container my-5">
+  <h3 class="mb-4 text-center">Perguntas Frequentes</h3>
+  <div class="accordion" id="faqAccordion">
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Qual a duração do curso?
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          A duração varia entre 20 a 50 horas, dependendo do curso. Você verá essa informação em cada detalhe do curso.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Posso acessar o curso para sempre?
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Sim! Todos os cursos comprados dão acesso vitalício ao conteúdo.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Preciso ter conhecimento prévio para fazer os cursos?
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Não necessariamente. Muitos cursos são para iniciantes, mas isso depende do curso escolhido.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="bg-light text-center text-lg-start mt-5 border-top">
+  <div class="container p-4">
+    <div class="row">
+
+      <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-primary fw-bold">EDIC</h5>
+        <p class="text-muted">
+          Plataforma de cursos online para você aprender no seu ritmo, com acesso vitalício e suporte especializado.
+        </p>
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-3">Links Úteis</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted text-decoration-none">Início</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Cursos</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Sobre</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-3">Contato</h6>
+        <p class="text-muted mb-1">Email: suporte@cursosonline.com</p>
+        <p class="text-muted mb-1">Telefone: +258 84 123 4567</p>
+        <p class="text-muted">Endereço: Av. Eduardo Mondlane, Maputo, Moçambique</p>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-3">Redes Sociais</h6>
+        <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-muted fs-5"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="text-center p-3 bg-white border-top" style="font-size: 0.9rem;">
+    © 2025 EDIC. Todos os direitos reservados.
+  </div>
+</footer>
+
+<!-- FontAwesome para ícones sociais -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script>
+  // Lista de cursos com imagens reais
+ const courses = [
+  {
+    id: 1,
+    title: "Curso de JavaScript",
+    category: "tecnologia",
+    price_usd: 0,
+    rating: 4.8,
+    total_students: 1500,
+    duration_hours: 40,
+    image: "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=800&q=80",
+    status: "publicado",
+    created_date: "2024-05-01"
+  },
+  {
+    id: 2,
+    title: "Marketing Digital Avançado",
+    category: "marketing",
+    price_usd: 45,
+    rating: 4.6,
+    total_students: 900,
+    duration_hours: 30,
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    status: "publicado",
+    created_date: "2024-04-15"
+  },
+  {
+    id: 3,
+    title: "Inglês para Iniciantes",
+    category: "idiomas",
+    price_usd: 100,
+    rating: 4.9,
+    total_students: 5000,
+    duration_hours: 50,
+    image: "https://images.unsplash.com/photo-1529078155058-5d716f45d604?auto=format&fit=crop&w=800&q=80",
+    status: "publicado",
+    created_date: "2024-06-20"
+  },
+  {
+    id: 4,
+    title: "Design UX/UI",
+    category: "design",
+    price_usd: 0,
+    rating: 4.7,
+    total_students: 300,
+    duration_hours: 25,
+    image: "https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=800&q=80",
+    status: "publicado",
+    created_date: "2024-07-10"
+  },
+];
+
+  localStorage.setItem('cursos', JSON.stringify(courses));
+  
+  function saveCourseToStorage(courseId) {
+  const course = courses.find(c => c.id === courseId);
+  if (course) {
+    localStorage.setItem('selectedCourse', JSON.stringify(course));
+  }
+}
+
+  function renderCourses(list, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  list.forEach(course => {
+    container.innerHTML += `
+      <div class="col-md-3 mb-4">
+        <div class="card course-card h-100 shadow-sm">
+          <img src="${course.image}" class="card-img-top" alt="${course.title}" style="height:180px; object-fit:cover;">
+          <div class="card-body d-flex flex-column">
+            <h6 class="fw-bold">${course.title}</h6>
+            <p class="text-muted small mb-1 text-capitalize">${course.category}</p>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-warning">
+                <i class="fas fa-star"></i> ${course.rating.toFixed(1)}
+              </span>
+              <span class="text-muted small">Duracao: ${course.duration_hours}h</span>
+            </div>
+            <p class="text-muted small mb-2">${course.total_students} alunos</p>
+            <p class="fw-bold mb-3">MZN ${course.price_usd === 0 ? "Gratuito" : (course.price_usd * 64).toLocaleString()}</p>
+            <a href="detalhes.html" class="btn btn-primary mt-auto" onclick="saveCourseToStorage(${course.id})">Acessar Curso</a>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+  function applyFilters() {
+    let search = document.getElementById("search").value.toLowerCase();
+    let category = document.getElementById("category").value;
+    let price = document.getElementById("price").value;
+    let sort = document.getElementById("sort").value;
+
+    let filtered = courses.filter(c => {
+      let matchSearch = c.title.toLowerCase().includes(search);
+      let matchCategory = category === "all" || c.category === category;
+      let matchPrice = price === "all" || (price === "free" && c.price_usd === 0) ||
+                       (price === "under50" && c.price_usd < 50) ||
+                       (price === "paid" && c.price_usd > 0);
+      return matchSearch && matchCategory && matchPrice;
+    });
+
+    // Ordenação
+    filtered.sort((a, b) => {
+      switch (sort) {
+        case "popular": return b.total_students - a.total_students;
+        case "rating": return b.rating - a.rating;
+        case "price_low": return a.price_usd - b.price_usd;
+        case "price_high": return b.price_usd - a.price_usd;
+        case "newest": return new Date(b.created_date) - new Date(a.created_date);
+        default: return 0;
+      }
+    });
+
+    document.getElementById("results-title").innerText = search ? `Resultados para "${search}"` : "Todos os Cursos";
+    document.getElementById("results-count").innerText = `${filtered.length} cursos encontrados`;
+
+    renderCourses(filtered, "courses-list");
+  }
+
+  // Inicialização
+  renderCourses(courses.slice(0, 3), "featured-courses");
+  applyFilters();
+
+  document.getElementById("applyFilters").addEventListener("click", applyFilters);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

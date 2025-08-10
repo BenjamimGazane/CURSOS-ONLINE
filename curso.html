@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curso - Acesso Liberado | EDIC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #E0D7FF 0%, #F9F9FF 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #star-rating .star {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+    }
+
+    #star-rating .star.text-warning {
+    color: #ffc107;
+    }
+    main.container {
+      flex: 1;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .course-image {
+      height: 280px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 15px rgb(138 43 226 / 0.2);
+    }
+    .section-title {
+      color: #6f42c1;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background-color: #6f42c1;
+      border-color: #6f42c1;
+    }
+    .btn-primary:hover {
+      background-color: #5829a0;
+      border-color: #5829a0;
+    }
+    .content-box {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 0 20px rgb(138 43 226 / 0.1);
+      margin-bottom: 2rem;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border-radius: 0.5rem;
+      border: none;
+      box-shadow: 0 0 15px rgb(138 43 226 / 0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="index.html">EDIC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Categorias</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+        </ul>
+        <form class="d-flex me-3">
+          <input class="form-control" type="search" placeholder="Buscar cursos" />
+        </form>
+        <a href="login.html" class="btn btn-outline-primary me-2">Entrar</a>
+        <a href="cadastro.html" class="btn btn-primary">Cadastrar</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="row g-4">
+      <div class="col-md-5">
+        <img id="course-image" src="" alt="Imagem do curso" class="course-image w-100" />
+      </div>
+      <div class="col-md-7 d-flex flex-column">
+        <h2 id="course-title" class="mb-2"></h2>
+        <p class="text-muted text-capitalize mb-1" id="course-category"></p>
+        <div class="d-flex align-items-center mb-3">
+          <span class="text-warning me-3">
+            <i class="fas fa-star"></i> <span id="course-rating"></span>
+          </span>
+          <small class="text-muted me-3" id="course-students"></small>
+          <small class="text-muted">Duração: <span id="course-duration"></span> horas</small>
+        </div>
+        <p class="price fw-bold mb-4" id="course-price"></p>
+        <p id="course-description" class="flex-grow-1 mb-4"></p>
+        <a href="#" class="btn btn-primary btn-lg w-100 mb-4" id="btn-start-course">Iniciar Curso</a>
+      </div>
+    </div>
+
+    <section class="content-box">
+      <h3 class="section-title">Aulas do Curso</h3>
+      <ul id="lesson-list" class="list-group">
+        <!-- Lista das aulas carregadas via JS -->
+      </ul>
+    </section>
+
+    <section class="content-box">
+      <h3 class="section-title">Vídeo Aula</h3>
+      <iframe id="video-player" src="" allowfullscreen></iframe>
+    </section>
+
+    <section class="content-box">
+        <h3 class="section-title">Testes (Avaliações)</h3>
+        <ul class="list-group mb-4" id="tests-list">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+        Teste 1: Fundamentos
+        <a href="teste.html" class="btn btn-outline-primary btn-sm">Fazer Teste</a>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+        Teste 2: Conceitos
+        <a href="teste.html" class="btn btn-outline-primary btn-sm">Fazer Teste</a>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+        Teste 3: Prática Final
+        <a href="teste.html" class="btn btn-outline-primary btn-sm">Fazer Teste</a>
+         </li>
+        </ul>
+    </section>
+
+    <section class="content-box">
+      <h3 class="section-title">Material para Download</h3>
+      <ul id="downloads-list" class="list-group">
+        <!-- Lista de materiais -->
+      </ul>
+    </section>
+
+   <section class="content-box mt-5">
+  <h3 class="section-title">Avalie este Curso</h3>
+  <div class="d-flex flex-column align-items-start">
+    <div id="star-rating" class="mb-2">
+      <i class="fa fa-star star" data-value="1"></i>
+      <i class="fa fa-star star" data-value="2"></i>
+      <i class="fa fa-star star" data-value="3"></i>
+      <i class="fa fa-star star" data-value="4"></i>
+      <i class="fa fa-star star" data-value="5"></i>
+    </div>
+    <span id="rating-text" class="text-muted">Clique para avaliar</span>
+  </div>
+</section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center text-lg-start mt-auto border-top">
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-primary fw-bold">EDIC</h5>
+          <p class="text-muted">
+            Plataforma de cursos online para você aprender no seu ritmo, com acesso vitalício e suporte especializado.
+          </p>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+          <h6 class="text-uppercase fw-bold mb-3">Links Úteis</h6>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-muted text-decoration-none">Início</a></li>
+            <li><a href="#" class="text-muted text-decoration-none">Cursos</a></li>
+            <li><a href="#" class="text-muted text-decoration-none">Sobre</a></li>
+            <li><a href="#" class="text-muted text-decoration-none">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h6 class="text-uppercase fw-bold mb-3">Contato</h6>
+          <p class="text-muted mb-1">Email: suporte@cursosonline.com</p>
+          <p class="text-muted mb-1">Telefone: +258 84 123 4567</p>
+          <p class="text-muted">Endereço: Av. Eduardo Mondlane, Maputo, Moçambique</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h6 class="text-uppercase fw-bold mb-3">Redes Sociais</h6>
+          <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-muted fs-5"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-3 bg-white border-top" style="font-size: 0.9rem;">
+      © 2025 EDIC. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const stars = document.querySelectorAll('#star-rating .star');
+  const ratingText = document.getElementById('rating-text');
+
+  stars.forEach(star => {
+    star.addEventListener('click', function() {
+      const rating = this.getAttribute('data-value');
+
+      // Marcar as estrelas selecionadas
+      stars.forEach(s => {
+        s.classList.toggle('text-warning', s.getAttribute('data-value') <= rating);
+      });
+
+      ratingText.textContent = `Você avaliou com ${rating} estrela${rating > 1 ? 's' : ''}`;
+    });
+  });
+    // Dados de exemplo das aulas e materiais (você pode substituir por dados reais)
+    const lessons = [
+      { id: 1, title: "Introdução ao Curso", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+      { id: 2, title: "JavaScript Básico", videoUrl: "https://www.youtube.com/embed/3PHXvlpOkf4" },
+      { id: 3, title: "Design de Interfaces", videoUrl: "https://www.youtube.com/embed/1Rs2ND1ryYc" },
+    ];
+
+    const downloads = [
+      { id: 1, title: "Slides do Curso", url: "#" },
+      { id: 2, title: "Código Fonte", url: "#" },
+      { id: 3, title: "Material Extra", url: "#" },
+    ];
+
+    // Carregar dados do curso
+    const course = JSON.parse(localStorage.getItem('selectedCourse'));
+    if (!course) {
+      document.body.innerHTML = '<div class="container py-5 text-center"><h2>Curso não encontrado.</h2><a href="index.html" class="btn btn-primary mt-3">Voltar</a></div>';
+    } else {
+      document.getElementById('course-image').src = course.image;
+      document.getElementById('course-title').innerText = course.title;
+      document.getElementById('course-category').innerText = course.category;
+      document.getElementById('course-rating').innerText = course.rating.toFixed(1);
+      document.getElementById('course-students').innerText = `${course.total_students} alunos`;
+      document.getElementById('course-duration').innerText = course.duration_hours;
+      document.getElementById('course-price').innerText = course.price_usd === 0 ? 'Gratuito' : `MZN ${(course.price_usd * 64).toLocaleString()}`;
+      document.getElementById('course-description').innerText = course.description || 'Descrição detalhada do curso não disponível.';
+    }
+
+    // Renderizar lista de aulas
+    const lessonList = document.getElementById('lesson-list');
+    lessons.forEach((lesson, index) => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item d-flex justify-content-between align-items-center';
+      li.textContent = `${index + 1}. ${lesson.title}`;
+      li.style.cursor = 'pointer';
+      li.addEventListener('click', () => {
+        document.getElementById('video-player').src = lesson.videoUrl;
+      });
+      lessonList.appendChild(li);
+    });
+
+    // Renderizar lista de downloads
+    const downloadsList = document.getElementById('downloads-list');
+    downloads.forEach(download => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item';
+      li.innerHTML = `<a href="${download.url}" target="_blank" class="text-decoration-none">${download.title}</a>`;
+      downloadsList.appendChild(li);
+    });
+
+    // Botão iniciar curso inicia a primeira aula
+    document.getElementById('btn-start-course').addEventListener('click', () => {
+      if (lessons.length > 0) {
+        document.getElementById('video-player').src = lessons[0].videoUrl;
+      }
+    });
+  </script>
+</body>
+</html>
