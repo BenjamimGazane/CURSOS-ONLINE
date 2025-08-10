@@ -27,6 +27,8 @@
       margin-bottom: 1.5rem;
       text-align: center;
     }
+    .correct { color: green; font-weight: bold; }
+    .wrong { color: red; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -61,10 +63,10 @@
         <p>1. Qual é o propósito principal do curso?</p>
         <select class="form-select" name="q1" required>
           <option value="" disabled selected>Selecione uma opção</option>
-          <option value="2">Aprender os conceitos básicos</option>
-          <option value="4">Dominar técnicas avançadas</option>
-          <option value="1">Conhecer a história</option>
-          <option value="3">Praticar exercícios</option>
+          <option value="Aprender os conceitos básicos">Aprender os conceitos básicos</option>
+          <option value="Dominar técnicas avançadas">Dominar técnicas avançadas</option>
+          <option value="Conhecer a história">Conhecer a história</option>
+          <option value="Praticar exercícios">Praticar exercícios</option>
         </select>
       </div>
       
@@ -72,10 +74,10 @@
         <p>2. Você se sentiu confortável com o ritmo das aulas?</p>
         <select class="form-select" name="q2" required>
           <option value="" disabled selected>Selecione uma opção</option>
-          <option value="4">Sim, foi ótimo</option>
-          <option value="3">Sim, mas poderia ser mais lento</option>
-          <option value="2">Um pouco difícil</option>
-          <option value="1">Muito difícil</option>
+          <option value="Sim, foi ótimo">Sim, foi ótimo</option>
+          <option value="Sim, mas poderia ser mais lento">Sim, mas poderia ser mais lento</option>
+          <option value="Um pouco difícil">Um pouco difícil</option>
+          <option value="Muito difícil">Muito difícil</option>
         </select>
       </div>
       
@@ -83,10 +85,10 @@
         <p>3. As explicações foram claras?</p>
         <select class="form-select" name="q3" required>
           <option value="" disabled selected>Selecione uma opção</option>
-          <option value="4">Sim, muito claras</option>
-          <option value="3">Em geral, sim</option>
-          <option value="2">Pouco claras</option>
-          <option value="1">Não claras</option>
+          <option value="Sim, muito claras">Sim, muito claras</option>
+          <option value="Em geral, sim">Em geral, sim</option>
+          <option value="Pouco claras">Pouco claras</option>
+          <option value="Não claras">Não claras</option>
         </select>
       </div>
       
@@ -94,10 +96,10 @@
         <p>4. Você recomenda este curso para outras pessoas?</p>
         <select class="form-select" name="q4" required>
           <option value="" disabled selected>Selecione uma opção</option>
-          <option value="4">Com certeza</option>
-          <option value="3">Provavelmente</option>
-          <option value="2">Talvez</option>
-          <option value="1">Não</option>
+          <option value="Com certeza">Com certeza</option>
+          <option value="Provavelmente">Provavelmente</option>
+          <option value="Talvez">Talvez</option>
+          <option value="Não">Não</option>
         </select>
       </div>
       
@@ -105,34 +107,33 @@
         <p>5. Como você avalia o material extra (downloads, vídeos)?</p>
         <select class="form-select" name="q5" required>
           <option value="" disabled selected>Selecione uma opção</option>
-          <option value="4">Excelente</option>
-          <option value="3">Bom</option>
-          <option value="2">Regular</option>
-          <option value="1">Ruim</option>
+          <option value="Excelente">Excelente</option>
+          <option value="Bom">Bom</option>
+          <option value="Regular">Regular</option>
+          <option value="Ruim">Ruim</option>
         </select>
       </div>
       
       <button type="submit" class="btn btn-primary w-100">Enviar Avaliação</button>
     </form>
 
-    <div id="result" class="mt-4 text-center" style="display:none;">
-      <h4>Sua pontuação total é: <span id="score"></span> / 20</h4>
+    <div id="result" class="mt-4" style="display:none;">
+      <h4 class="text-center">Sua pontuação: <span id="score"></span> / 5</h4>
+      <hr>
+      <div id="details"></div>
     </div>
   </div>
-</div>
 </div>
 
 <footer class="bg-light text-center text-lg-start mt-5 border-top">
   <div class="container p-4">
     <div class="row">
-
       <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
         <h5 class="text-primary fw-bold">EDIC</h5>
         <p class="text-muted">
           Plataforma de cursos online para você aprender no seu ritmo, com acesso vitalício e suporte especializado.
         </p>
       </div>
-
       <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
         <h6 class="text-uppercase fw-bold mb-3">Links Úteis</h6>
         <ul class="list-unstyled">
@@ -142,52 +143,55 @@
           <li><a href="#" class="text-muted text-decoration-none">Contato</a></li>
         </ul>
       </div>
-
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
         <h6 class="text-uppercase fw-bold mb-3">Contato</h6>
         <p class="text-muted mb-1">Email: suporte@cursosonline.com</p>
         <p class="text-muted mb-1">Telefone: +258 84 123 4567</p>
         <p class="text-muted">Endereço: Av. Eduardo Mondlane, Maputo, Moçambique</p>
       </div>
-
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h6 class="text-uppercase fw-bold mb-3">Redes Sociais</h6>
-        <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="me-3 text-muted fs-5"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="text-muted fs-5"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-
     </div>
   </div>
-
   <div class="text-center p-3 bg-white border-top" style="font-size: 0.9rem;">
     © 2025 EDIC. Todos os direitos reservados.
   </div>
 </footer>
 
-  <script>
-    document.getElementById('quizForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = e.target;
-      let totalScore = 0;
-      const inputs = form.querySelectorAll('select');
+<script>
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      for (const input of inputs) {
-        const val = parseInt(input.value);
-        if (isNaN(val)) {
-          alert('Por favor, responda todas as perguntas.');
-          return;
-        }
-        totalScore += val;
+    const correctAnswers = {
+      q1: "Dominar técnicas avançadas",
+      q2: "Sim, foi ótimo",
+      q3: "Sim, muito claras",
+      q4: "Com certeza",
+      q5: "Excelente"
+    };
+
+    let totalScore = 0;
+    let detailsHTML = "<h5>Relatório:</h5><ul class='list-group'>";
+
+    for (let q in correctAnswers) {
+      const select = document.querySelector(`[name="${q}"]`);
+      const answer = select.value;
+
+      if (answer === correctAnswers[q]) {
+        totalScore++;
+        detailsHTML += `<li class="list-group-item correct">✔ ${select.previousElementSibling.textContent} <br>Resposta correta: ${answer}</li>`;
+      } else {
+        detailsHTML += `<li class="list-group-item wrong">✘ ${select.previousElementSibling.textContent} <br>Sua resposta: ${answer} <br>Correta: ${correctAnswers[q]}</li>`;
       }
+    }
 
-      document.getElementById('score').innerText = totalScore;
-      document.getElementById('result').style.display = 'block';
-      form.style.display = 'none';
-    });
-  </script>
+    detailsHTML += "</ul>";
+    document.getElementById('score').textContent = totalScore;
+    document.getElementById('details').innerHTML = detailsHTML;
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('quizForm').style.display = 'none';
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
